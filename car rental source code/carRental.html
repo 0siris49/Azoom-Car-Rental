@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Rental Reservation</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+            /* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: red;
+  color: black;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+  background-color: red;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            color: white;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        form {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        label, input, select {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Image Gallery */
+        .responsive-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .responsive {
+            width: calc(32% - 10px);
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .responsive:hover {
+            border: 1px solid #777;
+            transform: scale(1.05);
+        }
+
+        .responsive img {
+            width: 100%;
+            height: auto;
+        }
+
+        .desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .contact-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-heading {
+            font-size: 24px;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-list-item {
+            margin: 10px 0;
+        }
+
+        .contact-list-item a {
+            color: #333;
+            text-decoration: none;
+        }
+
+         /* Flex container for the search box */
+        .search-container {
+            display: flex;
+            background-color: #f9f9f9;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Flex container for the input fields */
+        .input-container {
+            display: flex;
+            background-color: #f9f9f9;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+    </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script>
+const carDetails = {
+    car1: {
+        description: "This is Honda Civic 5th Gen. It's sedan with decent pickup speed.",
+        features: "Vtec technology, Improved Air conditioning, Bluetooth Hi-Fi system",
+        price: "$50/day",
+        brand: "Honda",
+        rentOutlet: "AZoom Thailand branch",
+    },
+    car2: {
+        description: "This is Mazda 3. It can make a great everyday commuter car that's also perfect for weekend drives on twisty roads.",
+        features: " Firm suspension, keeping the car nice and steady when cornering, slick steering",
+        price: "$65/day",
+        brand: "Mazda",
+        rentOutlet: "AZoom Singapore HeadQuarters",
+    },
+    car3: {
+        description: "Mazda CX-5 is a spacious SUV with room for the whole family.",
+        features: "Leather seats, advanced safety features, Strong suspension and economical fuel consumption",
+        price: "$100/day",
+        brand: "Mazda",
+        rentOutlet: "AZoom Malaysia branch",
+    },
+    car4: {
+        description: "This is Toyota Corrolla Altis. It's a compact sedan with excellent fuel efficiency.",
+        features: "Convertible top, premium sound system",
+        price: "$55/day",
+        brand: "Toyota",
+        rentOutlet: "AZoom Singapore HeadQuarters",
+    },
+    car5: {
+        description: "This is Mitsubishi Lancer Ex 1.5A. The car has much better pick up than other stock sedans and with better sound absorption interior. ",
+        features: "Sporty-Look, spacious interior, premium sound system",
+        price: "$90/day",
+        brand: "Mitsubishi",
+        rentOutlet: "AZoom Thailand branch",
+    },
+    car6: {
+        description: "This is the Honda Fit (3rd Gen). Honda Fit reliability is 85.65 and which makes it very reliable ",
+        features: "spacious interior, good city car",
+        price: "$60/day",
+        brand: "Honda",
+        rentOutlet: "AZoom Singapore branch",
+    },
+};
+
+function filterCars() {
+    const searchInput = document.getElementById("carSearch").value.toLowerCase();
+    const carImages = document.getElementsByClassName("responsive");
+
+    let found = false;
+
+    for (const car in carDetails) {
+        const carImage = document.querySelector(`[data-car="${car}"]`);
+
+        if (carDetails[car].brand.toLowerCase().includes(searchInput)) {
+            carImage.style.display = "block";
+            found = true;
+        } else {
+            carImage.style.display = "none";
+        }
+    }
+
+    if (!found) {
+        // If no matching cars were found, you can show a message or handle it as needed.
+        // For example, you can display a message indicating no cars match the search.
+        // Get the element by its ID
+    }
+}
+
+function displayCarDetails(carId) {
+            // Find the car details section and set its content
+            const carDetailsSection = document.getElementById("carDetails");
+            const carImage = document.getElementById("carImage");
+            const carDescription = document.getElementById("carDescription");
+            const carFeatures = document.getElementById("carFeatures");
+            const carPrice = document.getElementById("carPrice");
+            const carOutlet = document.getElementById("carOutlet");
+
+            if (carId == 'car1'){
+            carImage.src = 'https://carlite-assets.s3.ap-southeast-1.amazonaws.com/02/c6dd4ceb9045eb9e07e53a1742c9ce/Car.PNG'; // Set the image source
+            }else if(carId == 'car2'){
+            carImage.src = 'https://carlite-assets.s3.ap-southeast-1.amazonaws.com/0e/3a93dddaf64f90b481bbe974448314/Rental-_-Leasing---Mazda-3---Front-View.jpg'; // Set the image source
+            }else if(carId == 'car3'){
+            carImage.src = 'https://carlite-assets.s3-ap-southeast-1.amazonaws.com/a5/7c876d21cc4d94a5887d270c574700/Rental-Leasing---Mazda-CX-5---Front-View-.jpg'; // Set the image source
+            }else if(carId == 'car4'){
+            carImage.src = 'https://carlite-assets.s3-ap-southeast-1.amazonaws.com/f1/b63175eae94aafbded9722d18797af/Altis-New-.jpeg'; // Set the image source
+            }else if(carId == 'car5'){
+            carImage.src = 'https://carlite-assets.s3-ap-southeast-1.amazonaws.com/ee/4e226ce3ce4e59ba63b24f02dc51f1/Mitsubishi-Lancer-Ex-1.6-Rental-Leasing-Front-View-Red.JPG'; // Set the image source
+            }else if(carId == 'car6'){
+            carImage.src = 'https://carlite-assets.s3.ap-southeast-1.amazonaws.com/7d/1feb1a4d71411083479f0c2755b94b/Honda-Fit-1.3-Rental-Leasing-Front-View-.jpg'; // Set the image source
+            }
+            
+            carDescription.innerText = "Description: " + carDetails[carId].description;
+            carFeatures.innerText = "Features: " + carDetails[carId].features;
+            carPrice.innerText = "Price: " + carDetails[carId].price;
+            carOutlet.innerText = "Collect this car at: " + carDetails[carId].rentOutlet;
+
+            carDetailsSection.style.display = "block"; // Show the car details section
+        }
+
+
+ function reserveCar() {
+    const carModel = document.getElementById("carModel").value;
+    const pickupDate = document.getElementById("pickupDate").value;
+    const returnDate = document.getElementById("returnDate").value;
+    const creditCard = document.getElementById("creditCard").value;
+
+    if (pickupDate && returnDate && creditCard) {
+        // Find the selected car's details
+        const selectedCarDetails = carDetails[carModel];
+
+        if (selectedCarDetails) {
+            // Extract the last four digits of the credit card number
+            const lastFourDigits = creditCard.slice(-4);
+            const maskedCreditCard = `XXXX-XXX-${lastFourDigits}`;
+
+            const reservation = {
+                carModel: selectedCarDetails.brand, // Use the selected car's brand
+                pickupDate,
+                returnDate,
+                creditCard: maskedCreditCard,
+                carPrice: selectedCarDetails.price,
+                rentOutlet: selectedCarDetails.rentOutlet, // Include the rent outlet
+            };
+
+             // Store the reservation data in local storage
+            localStorage.setItem("reservationData", JSON.stringify(reservation));
+            
+            // Display the reservation details below the button
+            const reservationStatus = document.getElementById("reservationStatus");
+            reservationStatus.innerHTML = ` We have received your reservation request ! <br><br> Make your way to the designated rental office to collect your car. 
+            <br><br> 
+            <b>Reservation Details:<br>
+            Car Model: ${reservation.carModel}<br>
+            Pickup Date: ${reservation.pickupDate}<br>
+            Return Date: ${reservation.returnDate}<br>
+            Credit Card: ${reservation.creditCard}<br>
+            Collect at: ${reservation.rentOutlet} </b><br><br>  We are committed to delivering the highest level of service, and our primary goal is to offer you the utmost convenience. When you're ready to return your rental car, simply bring it back to our nearest outlet, ensuring a hassle-free experience.`;
+
+            // You can also clear the input fields here if needed
+            document.getElementById("pickupDate").value = "";
+            document.getElementById("returnDate").value = "";
+            document.getElementById("creditCard").value = "";
+        } else {
+            alert("Please select a valid car model.");
+        }
+    } else {
+        alert("Please fill in all the required fields.");
+    }
+}
+
+</script>
+
+</head>
+<body>
+      <div class="topnav" id="myTopnav">
+  <a href="Home.html" class="active"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDOlqxVnk8ickYfF72-qBWEUpR6XXVVeUgtw&usqp=CAU" style="width:42px;height:42px;"><br>AZoom</a>
+  <a href="#contactUs" style="width:100px;height:95px;">Contact</a>
+  <a href="custBill.html" style="width:100px;height:95px;">Pay Bill</a>
+    </div>
+ <h2 style="color:white; background-image: url('https://getwallpapers.com/wallpaper/full/5/6/d/1096611-black-car-wallpaper-1920x1080-screen.jpg'); background-repeat: no-repeat; background-size: cover; height: 600px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;">Welcome to AZoom Car Rental</h2>
+    <br><br><br><br>
+    <h1>Car Rental Reservation</h1>
+        <div class="search-container">
+        <label for="carSearch">Search for cars to rent:</label>
+        <input type="text" id="carSearch" name="carSearch" oninput="filterCars()">
+        </div>
+        <div id="carList"></div>
+        <div id="carDetails" style="display: none;">
+            <h2>Car Details</h2>
+            <img id="carImage" src="" alt="Car Image">
+            <p id="carDescription"></p>
+            <p id="carFeatures"></p>
+            <p id="carPrice"></p>
+            <p id="carOutlet"></p>
+        </div>
+        <br><br><br><br>
+        <h2 style="text-align: center;">Currently Available Cars for Rent</h2>
+  
+        <div class="responsive-container">
+            <div class="responsive" data-car="car1" onclick="displayCarDetails('car1')">
+                <div class="gallery">
+                    <a href="#carDetails">
+                        <img src="https://carlite-assets.s3.ap-southeast-1.amazonaws.com/02/c6dd4ceb9045eb9e07e53a1742c9ce/Car.PNG" alt="Honda Civic 5th Gen" width="600" height="400">
+                    </a>
+                    <div class="desc">Honda Civic 5th Gen</div>
+                </div>
+            </div>
+            
+            <div class="responsive" data-car="car2" onclick="displayCarDetails('car2')">
+                <div class="gallery">
+                    <a href="#carDetails">
+                        <img src="https://carlite-assets.s3.ap-southeast-1.amazonaws.com/0e/3a93dddaf64f90b481bbe974448314/Rental-_-Leasing---Mazda-3---Front-View.jpg" alt="Mazda 3" width="600" height="400">
+                    </a>
+                    <div class="desc">Mazda 3</div>
+                </div>
+            </div>
+            
+            <div class="responsive" data-car="car3" onclick="displayCarDetails('car3')">
+                <div class="gallery">
+                    <a href="#carDetails">
+                        <img src="https://carlite-assets.s3-ap-southeast-1.amazonaws.com/a5/7c876d21cc4d94a5887d270c574700/Rental-Leasing---Mazda-CX-5---Front-View-.jpg" alt="Mazda-CX-5" width="600" height="400">
+                    </a>
+                    <div class "desc">Mazda-CX-5</div>
+                </div>
+            </div>
+            
+            <div class="responsive" data-car="car4" onclick="displayCarDetails('car4')">
+                <div class="gallery">
+                    <a href="#carDetails">
+                        <img src="https://carlite-assets.s3-ap-southeast-1.amazonaws.com/f1/b63175eae94aafbded9722d18797af/Altis-New-.jpeg" alt="Toyota Corolla Altis" width="600" height="400">
+                    </a>
+                    <div class="desc">Toyota Corrolla Altis</div>
+                </div>
+            </div>
+            
+            <div class="responsive" data-car="car5" onclick="displayCarDetails('car5')">
+                <div class="gallery">
+                    <a href="#carDetails">
+                        <img src="https://carlite-assets.s3-ap-southeast-1.amazonaws.com/ee/4e226ce3ce4e59ba63b24f02dc51f1/Mitsubishi-Lancer-Ex-1.6-Rental-Leasing-Front-View-Red.JPG" alt="Mitsubishi-Lancer-Ex-1.5A" width="600" height="400">
+                    </a>
+                    <div class="desc">Mitsubishi-Lancer-Ex-1.5A</div>
+                </div>
+            </div>
+
+            <div class="responsive" data-car="car6" onclick="displayCarDetails('car6')">
+                <div class="gallery">
+                    <a href="#carDetails">
+                        <img src="https://carlite-assets.s3.ap-southeast-1.amazonaws.com/7d/1feb1a4d71411083479f0c2755b94b/Honda-Fit-1.3-Rental-Leasing-Front-View-.jpg" alt="Mitsubishi-Lancer-Ex-1.5A" width="600" height="400">
+                    </a>
+                    <div class="desc">Honda Fit (3rd Gen)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <br><br><br><br>
+
+  <div class="input-container">
+        <div>
+            <label for="carModel">Select a Car:</label>
+            <select id="carModel">
+                <option value="car1">Honda Civic 5th Gen</option>
+                <option value="car5">Honda Fit (3rd Gen)</option>
+                <option value="car2">Mazda 3</option>
+                <option value="car3">Mazda CX-5</option>
+                <option value="car4">Toyota Corolla Altis</option>
+                <option value="car5">Mitsubishi Lancer Ex 1.5A</option>
+            </select>
+        </div>
+        <div>
+            <label for="pickupDate">Pickup Date:</label>
+            <input type="date" id="pickupDate" name="pickupDate">
+        </div>
+        <div>
+            <label for="returnDate">Return Date:</label>
+            <input type="date" id="returnDate" name="returnDate">
+        </div>
+        <div>
+            <label for="creditCard">Credit Card Details:</label>
+            <input type="text" id="creditCard" name="creditCard">
+        </div>
+    </div>
+        <button type="button" onclick="reserveCar()">Reserve Car</button>
+
+        <p id="reservationStatus"></p>
+
+        <div class="contact-container">                                  
+            <p class="contact-heading" id="contactUs">Contact Us</p>
+            <ul class="contact-list">
+                <li class="contact-list-item"><a href="#" style="color:white;"><i class="fa fa-instagram"></i> Follow Us</a></li>
+                <li class="contact-list-item"><a href="#" style="color:white;"><i class="fa fa-whatsapp"></i> WhatsApp Us</a></li>
+                <li class="contact-list-item"><a href="#" style="color:white;"><i class="fa fa-facebook"></i> Visit Us</a></li>
+                <li class="contact-list-item"><a href="#" style="color:white;"><i class="fa fa-youtube"></i> Watch Us</a></li>
+            </ul>
+        </div>
+    </form>
+</body>
+</html>
+
+

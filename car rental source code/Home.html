@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <!-- Include Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body,
+    html {
+      height: 100%;
+       scroll-behavior: smooth;
+    }
+
+    .parallax {
+      background-image: url('https://images.unsplash.com/photo-1585503418537-88331351ad99?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FyJTIwcmVudGFsfGVufDB8fDB8fHww.jpg');
+      height: 40%;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+    }
+
+    /* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: red;
+  color: black;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+  background-color: red;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+    p {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: flex;
+      background-color: #333;
+    }
+
+    li {
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-right: 20px;
+    }
+
+    li a,
+    .dropbtn {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: red;
+    }
+
+    li.dropdown {
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+ /* Container for Benefits */
+.benefits-container {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  margin: 20px 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading for Benefits */
+.benefits-heading {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+/* List Styles for Benefits */
+.benefits-list {
+  list-style-type: disc;
+  text-align: left;
+  padding-left: 20px;
+}
+
+/* Individual Benefit List Items */
+.benefits-list-item {
+  margin-bottom: 10px;
+  color: #999;
+  font-size: 18px;
+  font-family: "Times New Roman", serif;
+}
+
+/* Add hover effect to list items */
+.benefits-list-item:hover {
+  color: yellow;
+  transition: color 0.3s;
+}
+
+    .slideshow-container {
+      background-color: #333;
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text {
+      color: #f2f2f2;
+      font-size: 25px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .numbertext {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .moreInfoText {
+      color: blue;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 50px 250px;
+      position: absolute;
+      text-align: center;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      position: relative;
+      margin: 0 2px;
+      background-color: #ddd;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active,
+    .dot:hover {
+      background-color: #717171;
+    }
+
+    .fade {
+      animation-name: fade;
+      animation-duration: 0.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0.8;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+.contact-container {
+  background-color: #f5f5f5; /* Slightly lighter background color */
+  padding: 20px;
+  border-radius: 15px; /* Increase border radius for a softer look */
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+.contact-heading {
+  font-size: 26px; /* Slightly larger font size */
+  font-weight: 600; /* Use a stronger font-weight for elegance */
+  color: #444; /* Slightly darker text color */
+  margin-bottom: 15px; /* Increased spacing at the bottom */
+}
+
+.contact-list {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 20px;
+  font-size: 18px; /* Increase the list item font size for better readability */
+}
+
+.fa {
+  font-size: 20px; /* Larger icon size */
+  width: 30px; /* Increased width and height for the icons */
+  height: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 5px; /* Increased margin for spacing */
+  border-radius: 50%;
+  line-height: 30px;
+  transition: transform 0.2s, opacity 0.3s;
+}
+
+.fa:hover {
+  opacity: 0.8; /* Slightly increased opacity on hover */
+  transform: scale(1.1); /* Slight scale-up effect on hover */
+}
+
+/* Updated social media icon colors */
+.fa-facebook {
+  background: #1877f2; /* Facebook blue */
+  color: white;
+}
+
+.fa-youtube {
+  background: #ff0000; /* YouTube red */
+  color: white;
+}
+
+.fa-instagram {
+  background: #bc2a8d; /* Instagram purple */
+  color: white;
+}
+
+.fa-whatsapp {
+  background: #25d366; /* WhatsApp green */
+  color: white;
+}
+
+
+  </style>
+
+  <script>
+    /* Slideshow script */
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {
+        slideIndex = 1
+      }
+      if (n < 1) {
+        slideIndex = slides.length
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
+</head>
+
+<body onload="showSlides(1)">
+
+  <div class="topnav" id="myTopnav">
+  <a href="Home.html" class="active"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDOlqxVnk8ickYfF72-qBWEUpR6XXVVeUgtw&usqp=CAU" style="width:42px;height:42px;"><br>AZoom</a>
+  <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn" style="width:85px;height:95px;">Login</a>
+      <div class="dropdown-content">
+        <a href="/custLogin.html">Customer Login</a>
+        <a href="/empLogin.html">Employer Login</a>
+      </div>
+    </li>
+  <a href="#AboutUs" style="width:85px;height:95px;">About</a>
+  <a href="#contactUs" style="width:85px;height:95px;">Contact</a>
+ 
+</div>
+
+<h2 style="color:white; background-image: url('https://getwallpapers.com/wallpaper/full/5/6/d/1096611-black-car-wallpaper-1920x1080-screen.jpg'); background-repeat: no-repeat; background-size: cover; height: 600px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;">Welcome to AZoom Car Rental</h2>
+
+<div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(your-image.jpg); background-size: cover; text-align: center; color: white; padding: 50px;">
+  <h1 style="font-size: 2em; margin: 0; text-transform: uppercase; font-weight: bold;">
+    Singapore's Leading All-in-One Car Rental Solution
+  </h1>
+</div>
+
+<div class="parallax"></div>
+
+<div style="background-color: #222; text-align: center; color: white; padding: 10px; position: relative;">
+  <div style="background-size: cover; background-position: center center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
+  <div style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
+  <p style="font-size: 20px; margin: 0; position: relative; z-index: 1;">
+    At AZoom, we take pride in our rich history of providing top-tier car rental solutions in Singapore. Whether you're embarking on a journey or attending a special event, you can trust us to meet all your needs and preferences.
+  </p>
+</div>
+
+<div class="parallax"></div>
+
+ <div class="benefits-container">
+  <p class="benefits-heading" style="text-align:center;">Why Choose Us?</p>
+  <ul class="benefits-list">
+    <li class="benefits-list-item">Wide variety of rental cars</li>
+    <li class="benefits-list-item">Exceptional customer support</li>
+    <li class="benefits-list-item">Efficient service</li>
+    <li class="benefits-list-item">Competitive pricing</li>
+    <li class="benefits-list-item">Special offers</li>
+    <li class="benefits-list-item">Unforgettable overall experience</li>
+  </ul>
+</div>
+
+<div class="parallax"></div>
+
+<div style="background-color: #222; text-align: center; color: white; padding: 10px; position: relative;">
+  <div style="background-size: cover; background-position: center center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
+  <div style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
+  <p style="font-size: 20px; margin: 0; position: relative; z-index: 1;">
+Below are just a few examples of the car varieties available at AZoom. For a complete list of the cars we offer, please login into our website.
+  </p>
+</div>
+
+  <!-- Slideshow container -->
+  <div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <div class="numbertext">1 /6</div>
+      <img src="https://carlite-assets.s3.ap-southeast-1.amazonaws.com/02/c6dd4ceb9045eb9e07e53a1742c9ce/Car.PNG" style="width:100%">
+      <div class="text">Honda City(5th Gen)</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 6</div>
+      <img src="https://carlite-assets.s3.ap-southeast-1.amazonaws.com/0e/3a93dddaf64f90b481bbe974448314/Rental-_-Leasing---Mazda-3---Front-View.jpg" style="width:100%">
+      <div class="text">Mazda 3 Skyactiv</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 6</div>
+      <img src="https://carlite-assets.s3-ap-southeast-1.amazonaws.com/a5/7c876d21cc4d94a5887d270c574700/Rental-Leasing---Mazda-CX-5---Front-View-.jpg" style="width:100%">
+      <div class="text">Mazda-CX-5</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 6</div>
+      <img src="https://carlite-assets.s3-ap-southeast-1.amazonaws.com/f1/b63175eae94aafbded9722d18797af/Altis-New-.jpeg" style="width:100%">
+      <div class="text">Toyota Corolla Altis (11th Gen)</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">5 / 6</div>
+      <img src="https://carlite-assets.s3-ap-southeast-1.amazonaws.com/ee/4e226ce3ce4e59ba63b24f02dc51f1/Mitsubishi-Lancer-Ex-1.6-Rental-Leasing-Front-View-Red.JPG" style="width:100%">
+      <div class="text">Mitsubishi Lancer Ex-1.5A</div>
+    </div>
+
+     <div class="mySlides fade">
+      <div class="numbertext">6 / 6</div>
+      <img src="https://carlite-assets.s3.ap-southeast-1.amazonaws.com/7d/1feb1a4d71411083479f0c2755b94b/Honda-Fit-1.3-Rental-Leasing-Front-View-.jpg" style="width:100%">
+      <div class="text">Honda Fit (3rd Gen)</div>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
+  </div>
+  
+ 
+<div class="parallax">
+   <!-- The dots/circles -->
+    <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+  </div>
+
+
+
+<div class="parallax"></div>
+
+</div>
+  <div class="contact-container" id="contactUs">
+    <p class="contact-heading" style="text-align:center;">Contact Us</p>
+    <ul class="contact-list">
+      <li class="contact-list-item"><a href="#"><i class="fa fa-instagram"></i> Follow Us</a></li>
+      <li class="contact-list-item"><a href="#"><i class="fa fa-whatsapp"></i> WhatsApp Us</a></li>
+      <li class="contact-list-item"><a href="#"><i class="fa fa-facebook"></i> Visit Us</a></li>
+      <li class="contact-list-item"><a href="#"><i class="fa fa-youtube"></i> Watch Us</a></li>
+    </ul>
+  </div>
+
+
+  <div class="parallax"></div>
+
+<div id="AboutUs" style="background-color: #222; text-align: center; color: white; padding: 10px; position: relative;">
+  <div style="background-size: cover; background-position: center center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
+  <div style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
+  <p style="font-size: 24px; margin: 0; position: relative; z-index: 1;">
+  About Us
+  </p>
+  <p style="font-size: 12px; margin: 0; position: relative; z-index: 1;">
+  Founded in 2002, AZoom Pte Ltd has been your trusted partner for hassle-free and unforgettable journeys on the road. At AZoom, we're passionate about putting you behind the wheel of the perfect vehicle for your every adventure. Whether you're a traveler seeking exploration or a local in need of reliable transportation, we've got you covered.
+  </p>
+  <br><br>
+  <p style="font-size: 24px; margin: 0; position: relative; z-index: 1;">
+  Our Mission
+  </p>
+  <p style="font-size: 12px; margin: 0; position: relative; z-index: 1;">
+  Our mission is simple: to provide you with exceptional car rental services that exceed your expectations. We're dedicated to making your travel experience enjoyable, convenient, and stress-free. With a fleet of meticulously maintained vehicles and a commitment to top-notch customer service, we strive to be your first choice for all your car rental needs.
+  </p>
+  <br><br>
+  <p style="font-size: 24px; margin: 0; position: relative; z-index: 1;">
+  Our Team
+  </p>
+  <p style="font-size: 12px; margin: 0; position: relative; z-index: 1;">
+  Behind AZoom is a team of dedicated professionals who share a love for travel and a commitment to serving our customers. We take pride in our knowledgeable staff who are passionate about helping you make the most of your rental experience.
+  </p>
+</div>
+
+
+</body>
+
+</html>
